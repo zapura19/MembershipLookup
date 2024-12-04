@@ -13,7 +13,7 @@ namespace MembershipLookup.API.Services
         }
         public string GetConfigValue(string keyName)
         {
-            return _configuration.GetValue<string>("ConfigurationSettings:" + keyName);
+            return Environment.GetEnvironmentVariable(keyName); //_configuration.GetValue<string>("ConfigurationSettings:" + keyName);
         }
 
         private string GetConnectionString()
