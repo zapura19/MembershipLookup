@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using System;
 
 namespace MembershipLookup.API.Services
 {
@@ -13,6 +14,11 @@ namespace MembershipLookup.API.Services
         public string GetConfigValue(string keyName)
         {
             return _configuration.GetValue<string>("ConfigurationSettings:" + keyName);
+        }
+
+        private string GetConnectionString()
+        {
+            return Environment.GetEnvironmentVariable("FunctionalDatabaseConn", EnvironmentVariableTarget.Process);
         }
     }
 }
